@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import com.enterprise.config.ConfigReader;
 import com.enterprise.driver.DriverFactory;
+import com.enterprise.pages.DashboardPage;
+import com.enterprise.pages.LoginPage;
 
 public class BestTest {
 	protected WebDriver driver;
@@ -17,6 +19,12 @@ public class BestTest {
 		driver.get(ConfigReader.getProperty("application.url"));
 	
 	}
+	
+	protected DashboardPage loginAsAdmin() {
+		LoginPage loginPage = new LoginPage(driver);
+		return loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
+	}
+	
 	
 	@AfterMethod
 	public void tearDown()

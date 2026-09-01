@@ -12,10 +12,19 @@ public class PIMPage extends BasePage {
 	}
 	
 	private final By pageHeader = By.xpath("//h6[text()='PIM']");
+	private final By btnAdd=By.xpath("//button[normalize-space()='Add']");
 
     public boolean isPIMPageDisplayed() {
 
         return isDisplayed(pageHeader);
+
+    }
+    
+    public AddEmployeePage clickAddEmployee(){
+
+        click(btnAdd);
+
+        return new AddEmployeePage(driver);
 
     }
     
