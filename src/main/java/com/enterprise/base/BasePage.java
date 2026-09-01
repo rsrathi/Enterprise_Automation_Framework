@@ -21,21 +21,25 @@ public class BasePage {
 	}
 	
 	protected void type(By locator,String text) {
-		WebElement element=wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-		element.clear();
+		WebElement element=find(locator);
+		element.click();
 		element.sendKeys(text);
 	}
 	
 	protected void click(By locator) {
-		WebElement element=wait.until(ExpectedConditions.elementToBeClickable(locator));
-		element.click();
+		find(locator).click();
 		}
 	
 	protected String getText(By locator) {
-		return driver.findElement(locator).getText();
+		return find(locator).getText();
 	}
 	
 	protected boolean isDisplayed(By locator) {
-		return driver.findElement(locator).isDisplayed();
+		return find(locator).isDisplayed();
+	}
+	
+	protected WebElement find(By locator) {
+	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
 	}
 }
