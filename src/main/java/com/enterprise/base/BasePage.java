@@ -25,6 +25,12 @@ public class BasePage {
 		element.click();
 		element.sendKeys(text);
 	}
+	protected void waitForLoaderToDisappear(By loader) {
+
+	    wait.until(
+	        ExpectedConditions.invisibilityOfElementLocated(loader));
+
+	}
 	
 	protected void click(By locator) {
 		find(locator).click();

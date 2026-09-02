@@ -2,6 +2,8 @@ package com.enterprise.utils;
 
 import java.util.Random;
 
+import com.enterprise.models.Employee;
+
 public class RandomDataUtils {
 	
 	private static final Random RANDOM=new Random();
@@ -30,6 +32,14 @@ public class RandomDataUtils {
     public static String getRandomLastName() {
 
         return "Smith" + getRandomNumber();
+
+    }
+    public static Employee getRandomEmployee() {
+
+        return new Employee(
+                getRandomFirstName(),
+                getRandomMiddleName(),
+                getRandomLastName());
 
     }
 

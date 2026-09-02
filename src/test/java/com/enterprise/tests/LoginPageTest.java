@@ -3,6 +3,7 @@ package com.enterprise.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.enterprise.base.BestTest;
+import com.enterprise.models.Employee;
 import com.enterprise.pages.AddEmployeePage;
 import com.enterprise.pages.DashboardPage;
 import com.enterprise.pages.EmployeeDetailsPage;
@@ -29,9 +30,9 @@ public class LoginPageTest extends BestTest {
 		DashboardPage dashboard=loginAsAdmin();
 		PIMPage pimPage = dashboard.leftMenu().clickPIM();
 		AddEmployeePage addemployee=pimPage.clickAddEmployee();
-		EmployeeDetailsPage employee=addemployee.addEmployee(RandomDataUtils.getRandomFirstName(),RandomDataUtils.getRandomMiddleName(),RandomDataUtils.getRandomLastName());
-		Assert.assertTrue(employee.isPersonalDetailsDisplayed());
-		Assert.assertTrue(employee.isPersonalDetailsDisplayed(),"Employee Details page is not displayed.");
+		Employee employeedata=RandomDataUtils.getRandomEmployee();
+		EmployeeDetailsPage employeedetails=addemployee.addEmployee(employeedata);
+		Assert.assertTrue(employeedetails.isPersonalDetailsDisplayed(),"Employee Details page is not displayed.");
 	}
 
 }
