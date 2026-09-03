@@ -8,6 +8,7 @@ import com.enterprise.pages.AddEmployeePage;
 import com.enterprise.pages.DashboardPage;
 import com.enterprise.pages.EmployeeDetailsPage;
 import com.enterprise.utils.RandomDataUtils;
+import com.enterprise.utils.ScreenshotsUtil;
 import com.enterprise.pages.PIMPage;
 
 public class LoginPageTest extends BestTest {
@@ -16,6 +17,8 @@ public class LoginPageTest extends BestTest {
 	public void verifyLogin() {
 		DashboardPage dashboard=loginAsAdmin();
 		Assert.assertTrue(dashboard.isDashboardDisplayed());
+		String screenshot = ScreenshotsUtil.captureScreenshot(driver, "verifyLogin");
+		System.out.println(screenshot);
 	}
 	
 	@Test

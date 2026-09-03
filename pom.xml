@@ -16,6 +16,8 @@
     
     <selenium.version>4.34.0</selenium.version>
     <testng.version>7.11.0</testng.version>
+    <log4j2.version>2.25.1</log4j2.version>
+    
    
 </properties>
 
@@ -31,6 +33,17 @@
     <artifactId>testng</artifactId>
     <version>${testng.version}</version>
     <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>${log4j2.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>${log4j2.version}</version>
 </dependency>
   </dependencies>
   <build>
