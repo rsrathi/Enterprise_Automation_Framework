@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +22,7 @@ public class ScreenshotsUtil {
 		String destination="target/screenshots/"+testName+"_"+timestamp+".png";
 		File source=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
-			Files.createDirectories(new File("screenshots").toPath());
+			Files.createDirectories(new File("target/screenshots").toPath());
 			Files.copy(source.toPath(),new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
 		}catch(IOException e) {
 			throw new RuntimeException(e);
