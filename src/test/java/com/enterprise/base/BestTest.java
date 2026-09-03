@@ -1,6 +1,9 @@
 package com.enterprise.base;
 
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.Listeners;
+
+import com.enterprise.listeners.TestListeners;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.AfterMethod;
@@ -11,6 +14,8 @@ import com.enterprise.logger.LoggerManager;
 import com.enterprise.pages.DashboardPage;
 import com.enterprise.pages.LoginPage;
 
+
+@Listeners(TestListeners.class)
 public class BestTest {
 	protected WebDriver driver;
 	
