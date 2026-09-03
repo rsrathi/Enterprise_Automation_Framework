@@ -20,7 +20,7 @@ public class ScreenshotsUtil {
 	public static String captureScreenshot(WebDriver driver, String testName) {
 		
 		String timestamp=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-		String destination="screenshots/"+testName+"_"+timestamp+".png";
+		String destination="target/screenshots/"+testName+"_"+timestamp+".png";
 		File source=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
 			Files.createDirectories(new File("screenshots").toPath());

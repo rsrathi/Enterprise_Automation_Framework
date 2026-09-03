@@ -1,23 +1,36 @@
 package com.enterprise.listeners;
 
+import org.apache.logging.log4j.Logger;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.enterprise.driver.DriverFactory;
+import com.enterprise.logger.LoggerManager;
+import com.enterprise.utils.ScreenshotsUtil;
+
 public class TestListeners implements ITestListener{
+	
+	private static final Logger LOGGER = LoggerManager.getLogger(TestListeners.class);
 	
 	@Override
 	public void onTestStart(ITestResult result) {
-		System.out.println("STARTED:"+result.getMethod().getMethodName());
+		LOGGER.info("Started: {}",result.getMethod().getMethodName());
 	}
 	
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		System.out.println("PASSED:"+result.getMethod().getMethodName());
+		LOGGER.info("Passed: {}",result.getMethod().getMethodName());
 	}
 	
 	@Override
 	public void onTestFailure(ITestResult result) {
-		System.out.println("FAILED:"+result.getMethod().getMethodName());
+		LOGGER.info("Failed: {}",result.getMethod().getMethodName());
+		String screenshot=ScreenshotsUtil.captureScreenshot(DriverFactory.getDriver(), result.getMethod().getMethodName());
+		LOGGER.info("Screenshots saved: {}",screenshot);
+				
 	}
-
+	
+	
+	
+	
 }
