@@ -26,10 +26,7 @@ public class BasePage {
 		element.sendKeys(text);
 	}
 	protected void waitForLoaderToDisappear(By loader) {
-
-	    wait.until(
-	        ExpectedConditions.invisibilityOfElementLocated(loader));
-
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
 	}
 	
 	protected void click(By locator) {
@@ -47,5 +44,10 @@ public class BasePage {
 	protected WebElement find(By locator) {
 	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
+	}
+	protected void selectAutoSuggestion(String option) {
+		By suggestion=By.xpath("//span[text()='"+option+"']");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(suggestion));
+		click(suggestion);
 	}
 }

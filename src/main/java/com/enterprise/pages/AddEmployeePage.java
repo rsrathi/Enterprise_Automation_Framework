@@ -2,6 +2,7 @@ package com.enterprise.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.enterprise.base.BasePage;
 import com.enterprise.models.Employee;
@@ -18,6 +19,8 @@ public class AddEmployeePage extends BasePage {
 	private final By lastName=By.name("lastName");
 	private final By btnSave=By.xpath("//button[@type='submit']");
 	private final By loader=By.xpath("//div[@class='oxd-form-loader']");
+	private final By personalDetailsHeader =By.xpath("//h6[text()='Personal Details']");
+	private final By employeeID=By.xpath("//input[@class='oxd-input oxd-input--active']");
 	
 	public void enterFirstName(String firstname) {
 		type(firstName,firstname);
@@ -31,18 +34,22 @@ public class AddEmployeePage extends BasePage {
 		type(lastName,lastname);
 	}
 	
-	public void clickAdd() {
+	public void clickSave() {
 		click(btnSave);
 	}
 	
+	public void enterEmployeeId(String id) {
+		type(employeeID,id);
+	}
 	
 	
 	public EmployeeDetailsPage addEmployee(Employee employee) {
 		enterFirstName(employee.getFirstName());
 		enterMiddleName(employee.getMiddleName());
 		enterLastName(employee.getLastName());
-		clickAdd();
-		waitForLoaderToDisappear(loader);
+		enterEmployeeId(employee.getEmployeeID());
+		clickSave();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(personalDetailsHeader));
 		return new EmployeeDetailsPage(driver);
 	}
 	

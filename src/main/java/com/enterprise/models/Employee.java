@@ -5,11 +5,13 @@ public class Employee {
 	private String firstName;
 	private String middleName;
 	private String lastName;
+	private String employeeID;
 	
-	public Employee(String firstName,String middleName,String lastName) {
+	public Employee(String firstName,String middleName,String lastName,String employeeID) {
 		this.firstName=firstName;
 		this.middleName=middleName;
 		this.lastName=lastName;
+		this.employeeID=employeeID;
 	}
 	
 	public String getFirstName() {
@@ -24,5 +26,11 @@ public class Employee {
 		return lastName;
 	}
 	
+	public String getFullName() {
+		return firstName+" "+middleName+" "+lastName;
+	}
 	
+	public String getEmployeeID() {
+		return employeeID;
+	}
 }

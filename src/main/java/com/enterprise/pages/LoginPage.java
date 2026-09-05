@@ -9,8 +9,7 @@ import com.enterprise.base.BasePage;
 
 public class LoginPage extends BasePage{
 	
-	private static final Logger LOGGER =
-	        LoggerManager.getLogger(LoginPage.class);
+	private static final Logger LOGGER =LoggerManager.getLogger(LoginPage.class);
 
 	public LoginPage(WebDriver driver) {
 		super(driver);

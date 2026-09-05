@@ -19,27 +19,33 @@ public class RandomDataUtils {
 	
 	public static String getRandomFirstName() {
 
-        return "John" + getRandomNumber();
+        return "test" + getRandomNumber();
 
     }
 
     public static String getRandomMiddleName() {
 
-        return "A";
+        return "user";
 
     }
 
     public static String getRandomLastName() {
 
-        return "Smith" + getRandomNumber();
+        return "Sample" + getRandomNumber();
 
     }
+    
+    public static String getRandomEmployeeID() {
+    	return getRandomNumber();
+    }
+    
     public static Employee getRandomEmployee() {
 
         return new Employee(
                 getRandomFirstName(),
                 getRandomMiddleName(),
-                getRandomLastName());
+                getRandomLastName(),
+        		getRandomEmployeeID());
 
     }
 

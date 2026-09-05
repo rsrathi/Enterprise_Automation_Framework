@@ -13,11 +13,14 @@ import com.enterprise.driver.DriverFactory;
 import com.enterprise.logger.LoggerManager;
 import com.enterprise.pages.DashboardPage;
 import com.enterprise.pages.LoginPage;
+import com.enterprise.pages.PIMPage;
 
 
 @Listeners(TestListeners.class)
 public class BestTest {
 	protected WebDriver driver;
+	
+	private static final Logger LOGGER=LoggerManager.getLogger(BestTest.class);
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
@@ -34,7 +37,11 @@ public class BestTest {
 		return loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
 	}
 	
-	private static final Logger LOGGER=LoggerManager.getLogger(BestTest.class);
+	protected PIMPage navigateToPIM() {
+
+	    DashboardPage dashboard =loginAsAdmin();
+	    return dashboard.leftMenu().clickPIM();
+	}
 	
 	@AfterMethod
 	public void tearDown()
