@@ -1,23 +1,18 @@
 package com.enterprise.base;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.enterprise.config.ConfigReader;
+import com.enterprise.utils.WaitUtils;
 
 public class BasePage {
 
 	protected WebDriver driver;
-	protected WebDriverWait wait;
+	protected final WaitUtils waitUtils;
 	
 	public BasePage(WebDriver driver) {
 		this.driver=driver;
-		wait=new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(ConfigReader.getProperty("explicit.wait"))));
+		this.waitUtils=new WaitUtils(driver);
 	}
 	
 	protected void type(By locator,String text) {
@@ -26,7 +21,7 @@ public class BasePage {
 		element.sendKeys(text);
 	}
 	protected void waitForLoaderToDisappear(By loader) {
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
+		waitUtils.waitForInvisibility(loader);
 	}
 	
 	protected void click(By locator) {
@@ -42,12 +37,12 @@ public class BasePage {
 	}
 	
 	protected WebElement find(By locator) {
-	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	    return waitUtils.waitForVisibility(locator);
 
 	}
 	protected void selectAutoSuggestion(String option) {
 		By suggestion=By.xpath("//span[text()='"+option+"']");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(suggestion));
+		waitUtils.waitForVisibility(suggestion);
 		click(suggestion);
 	}
 	

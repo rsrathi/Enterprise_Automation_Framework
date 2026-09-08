@@ -2,8 +2,6 @@ package com.enterprise.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import com.enterprise.base.BasePage;
 import com.enterprise.models.Employee;
 
@@ -49,7 +47,7 @@ public class AddEmployeePage extends BasePage {
 		enterLastName(employee.getLastName());
 		enterEmployeeId(employee.getEmployeeID());
 		clickSave();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(personalDetailsHeader));
+		waitUtils.waitForVisibility(btnSave);
 		return new EmployeeDetailsPage(driver);
 	}
 	
