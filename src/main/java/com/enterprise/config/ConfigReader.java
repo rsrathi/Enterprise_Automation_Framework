@@ -1,6 +1,8 @@
 package com.enterprise.config;
 import java.util.Properties;
 
+import com.enterprise.exception.ConfigurationException;
+
 public class ConfigReader {
 	private static final Properties frameworkProperties=new Properties();
 	private static final Properties environmentProperties = new Properties();
@@ -30,8 +32,7 @@ public class ConfigReader {
 	    }
 
 	    if (value == null || value.isBlank()) {
-	        throw new RuntimeException(
-	                "Property '" + key + "' not found.");
+	    	throw new ConfigurationException("Property '" + key + "' not found.");
 	    }
 
 	    return value.trim();

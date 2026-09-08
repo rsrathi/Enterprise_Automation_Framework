@@ -7,7 +7,7 @@ import org.testng.ITestResult;
 import com.enterprise.driver.DriverFactory;
 import com.enterprise.logger.LoggerManager;
 import com.enterprise.reports.AllureManager;
-import com.enterprise.utils.ScreenshotsUtil;
+import com.enterprise.utils.ScreenshotUtils;
 
 public class TestListeners implements ITestListener{
 	
@@ -26,7 +26,7 @@ public class TestListeners implements ITestListener{
 	@Override
 	public void onTestFailure(ITestResult result) {
 		LOGGER.info("Failed: {}",result.getMethod().getMethodName());
-		String screenshot=ScreenshotsUtil.captureScreenshot(DriverFactory.getDriver(), result.getMethod().getMethodName());
+		String screenshot=ScreenshotUtils.captureScreenshot(DriverFactory.getDriver(), result.getMethod().getMethodName());
 		LOGGER.info("Screenshots saved: {}",screenshot);
 		AllureManager.attachScreenshot(screenshot, result.getMethod().getMethodName());
 				

@@ -3,16 +3,20 @@ package com.enterprise.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.enterprise.utils.JavaScriptUtils;
 import com.enterprise.utils.WaitUtils;
 
 public class BasePage {
 
 	protected WebDriver driver;
 	protected final WaitUtils waitUtils;
+	//protected final JavaScriptsUtils jsUtils;
 	
 	public BasePage(WebDriver driver) {
 		this.driver=driver;
 		this.waitUtils=new WaitUtils(driver);
+		//this.jsUtils=new JavaScriptsUtils(driver);
 	}
 	
 	protected void type(By locator,String text) {
