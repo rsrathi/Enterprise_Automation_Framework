@@ -18,23 +18,23 @@ public class ConfigReader {
 	}
 	
 	public static String getProperty(String key) {
-		String value=System.getProperty(key);
-		if(value==null || value.trim().isEmpty()) {
-			return value.trim();
-		}
-		value =environmentProperties.getProperty(key);
-		 if (value != null && !value.isBlank()) {
-		        return value.trim();
-		    }
 
-		    value = frameworkProperties.getProperty(key);
+	    String value = System.getProperty(key);
 
-		    if (value != null && !value.isBlank()) {
-		        return value.trim();
-		    }
+	    if (value == null || value.isBlank()) {
+	        value = environmentProperties.getProperty(key);
+	    }
 
-		    throw new RuntimeException(
-		            "Property '" + key + "' not found.");
+	    if (value == null || value.isBlank()) {
+	        value = frameworkProperties.getProperty(key);
+	    }
+
+	    if (value == null || value.isBlank()) {
+	        throw new RuntimeException(
+	                "Property '" + key + "' not found.");
+	    }
+
+	    return value.trim();
 	}
 	public static boolean getBoolean(String key) {
 		return Boolean.parseBoolean(getProperty(key));

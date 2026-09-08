@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import com.enterprise.config.ConfigReader;
+import com.enterprise.constants.FrameworkConstants;
 import com.enterprise.driver.DriverFactory;
 import com.enterprise.logger.LoggerManager;
 import com.enterprise.pages.DashboardPage;
@@ -27,14 +28,14 @@ public class BaseTest {
 		LOGGER.info("Launching browser...");
 		driver=DriverFactory.getDriver();
 		driver.manage().window().maximize();
-		driver.get(ConfigReader.getProperty("application.url"));
+		driver.get(ConfigReader.getProperty(FrameworkConstants.APPLICATION_URL));
 		LOGGER.info("Opening application URL.");
 	
 	}
 	
 	protected DashboardPage loginAsAdmin() {
 		LoginPage loginPage = new LoginPage(driver);
-		return loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
+		return loginPage.login(ConfigReader.getProperty(FrameworkConstants.USERNAME),ConfigReader.getProperty(FrameworkConstants.PASSWORD));
 	}
 	
 	protected PIMPage navigateToPIM() {
