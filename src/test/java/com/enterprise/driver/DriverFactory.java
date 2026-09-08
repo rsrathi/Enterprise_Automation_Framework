@@ -1,7 +1,9 @@
 package com.enterprise.driver;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import com.enterprise.config.ConfigReader;
 
 public class DriverFactory {
 	
@@ -12,7 +14,8 @@ public class DriverFactory {
 	}
 	public static WebDriver getDriver() {
 		if (DRIVER.get()==null) {
-			DRIVER.set(new ChromeDriver());
+			String browser=ConfigReader.getProperty("browser");
+			DRIVER.set(BrowserFactory.createBrowser(browser));
 		}
 		return DRIVER.get();
 	}

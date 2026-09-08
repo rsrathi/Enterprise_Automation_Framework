@@ -3,15 +3,14 @@ package com.enterprise.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.enterprise.base.BestTest;
+import com.enterprise.base.BaseTest;
 import com.enterprise.models.Employee;
-import com.enterprise.pages.AddEmployeePage;
 import com.enterprise.pages.EmployeeDetailsPage;
 import com.enterprise.pages.PIMPage;
 import com.enterprise.services.EmployeeService;
 import com.enterprise.utils.RandomDataUtils;
 
-public class PIMPageTest extends BestTest {
+public class PIMPageTest extends BaseTest {
 	@Test
 	public void verifyNavigationToPIM() {
 		PIMPage pim=navigateToPIM();

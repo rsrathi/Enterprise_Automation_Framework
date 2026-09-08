@@ -1,8 +1,8 @@
 package com.enterprise.utils;
 
 import java.util.Random;
+import com.enterprise.models.*;
 
-import com.enterprise.models.Employee;
 
 public class RandomDataUtils {
 	

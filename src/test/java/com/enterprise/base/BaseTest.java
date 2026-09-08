@@ -17,10 +17,10 @@ import com.enterprise.pages.PIMPage;
 
 
 @Listeners(TestListeners.class)
-public class BestTest {
+public class BaseTest {
 	protected WebDriver driver;
 	
-	private static final Logger LOGGER=LoggerManager.getLogger(BestTest.class);
+	private static final Logger LOGGER=LoggerManager.getLogger(BaseTest.class);
 	
 	@BeforeMethod
 	public void setUp() throws InterruptedException {

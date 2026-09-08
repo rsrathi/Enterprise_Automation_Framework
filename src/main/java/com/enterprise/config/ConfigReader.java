@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.management.RuntimeErrorException;
+
 
 public class ConfigReader {
 	private static final Properties properties=new Properties();

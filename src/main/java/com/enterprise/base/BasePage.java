@@ -50,4 +50,10 @@ public class BasePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(suggestion));
 		click(suggestion);
 	}
+	
+	protected boolean isElementPresent(By locator) {
+
+	    return !driver.findElements(locator).isEmpty();
+
+	}
 }

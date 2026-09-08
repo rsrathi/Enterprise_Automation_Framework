@@ -2,15 +2,11 @@ package com.enterprise.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.enterprise.base.BestTest;
-import com.enterprise.models.Employee;
-import com.enterprise.pages.AddEmployeePage;
+import com.enterprise.base.BaseTest;
 import com.enterprise.pages.DashboardPage;
-import com.enterprise.pages.EmployeeDetailsPage;
-import com.enterprise.utils.RandomDataUtils;
-import com.enterprise.pages.PIMPage;
 
-public class LoginPageTest extends BestTest {
+
+public class LoginPageTest extends BaseTest {
 	
 	@Test
 	public void verifyLogin() {
