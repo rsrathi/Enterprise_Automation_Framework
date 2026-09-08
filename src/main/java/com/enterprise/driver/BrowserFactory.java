@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public final class BrowserFactory {
+public final class BrowserFactory{
 	
 	private BrowserFactory() {
 		
@@ -18,7 +18,7 @@ public final class BrowserFactory {
 		
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			return new ChromeDriver();
+			return new ChromeDriver(BrowserManager.getChromeOptions());
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
 			return new FirefoxDriver();
