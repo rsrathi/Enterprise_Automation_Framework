@@ -1,21 +1,16 @@
 package com.enterprise.config;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
 
-
-
 public class ConfigReader {
-	private static final Properties properties=new Properties();
+	private static final Properties frameworkProperties=new Properties();
+	private static final Properties environmentProperties = new Properties();
 	
 	static {
-		try {
-			FileInputStream file=new FileInputStream("src/test/resources/config/config.properties");
-			properties.load(file);
-		}catch(IOException e) {
-			throw new RuntimeException("Unable to load config.properties from src/test/resources/config/",e);
-		}
+		frameworkProperties.putAll(PropertyLoader.load("src/test/resources/config/framework.properties"));
+
+		    String environment =EnvironmentManger.getEnvironment(frameworkProperties);
+
+		    environmentProperties.putAll(PropertyLoader.load("src/test/resources/config/" +environment +".properties"));
 	}
 	
 	private ConfigReader() {
@@ -23,15 +18,26 @@ public class ConfigReader {
 	}
 	
 	public static String getProperty(String key) {
-		String value=properties.getProperty(key);
+		String value=System.getProperty(key);
 		if(value==null || value.trim().isEmpty()) {
-			throw new RuntimeException("Property "+key+"not found in configuration file.");
+			return value.trim();
 		}
-		return value.trim();
+		value =environmentProperties.getProperty(key);
+		 if (value != null && !value.isBlank()) {
+		        return value.trim();
+		    }
+
+		    value = frameworkProperties.getProperty(key);
+
+		    if (value != null && !value.isBlank()) {
+		        return value.trim();
+		    }
+
+		    throw new RuntimeException(
+		            "Property '" + key + "' not found.");
 	}
-	
 	public static boolean getBoolean(String key) {
-		return Boolean.getBoolean(getProperty(key));
+		return Boolean.parseBoolean(getProperty(key));
 	}
 
 	public static int getInt(String key) {
