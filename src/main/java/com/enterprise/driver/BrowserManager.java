@@ -7,59 +7,49 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import com.enterprise.config.ConfigReader;
 
 public final class BrowserManager {
-	private BrowserManager() {}
-		public static ChromeOptions getChromeOptions() {
-			 ChromeOptions options = new ChromeOptions();
+	private BrowserManager() {
+	}
 
-		        if(Boolean.parseBoolean(ConfigReader.getProperty("headless"))) {
-		            options.addArguments("--headless=new");
-		        }
+	public static ChromeOptions getChromeOptions() {
+		ChromeOptions options = new ChromeOptions();
 
-		        if(Boolean.parseBoolean(ConfigReader.getProperty("incognito"))) {
-		            options.addArguments("--incognito");
-		        }
+		if (ConfigReader.getBoolean("headless")) {
+			options.addArguments("--headless=new");
+		}
+		if (ConfigReader.getBoolean("incognito")) {
+		    options.addArguments("--incognito");
+		}
+		if (ConfigReader.getBoolean("disableNotifications")) {
+		    options.addArguments("--disable-notifications");
+		}
 
-		        if(Boolean.parseBoolean(ConfigReader.getProperty("maximize"))) {
-		            options.addArguments("--start-maximized");
-		        }
+		options.setAcceptInsecureCerts(ConfigReader.getBoolean("acceptInsecureCerts"));
 
-		        if(Boolean.parseBoolean(ConfigReader.getProperty("disableNotifications"))) {
-		            options.addArguments("--disable-notifications");
-		        }
+		return options;
+	}
 
-		        options.setAcceptInsecureCerts(
-		                Boolean.parseBoolean(
-		                        ConfigReader.getProperty("acceptInsecureCerts")));
+	public static FirefoxOptions getFirefoxOptions() {
 
-		        return options;
-		    }
-		public static FirefoxOptions getFirefoxOptions() {
+		FirefoxOptions options = new FirefoxOptions();
 
-	        FirefoxOptions options = new FirefoxOptions();
+		if (ConfigReader.getBoolean("headless")) {
+		    options.addArguments("-headless");
+		}
 
-	        if(Boolean.parseBoolean(ConfigReader.getProperty("headless"))) {
-	            options.addArguments("-headless");
-	        }
+		options.setAcceptInsecureCerts(ConfigReader.getBoolean("acceptInsecureCerts"));
 
-	        options.setAcceptInsecureCerts(
-	                Boolean.parseBoolean(
-	                        ConfigReader.getProperty("acceptInsecureCerts")));
+		return options;
+	}
 
-	        return options;
-	    }
-		public static EdgeOptions getEdgeOptions() {
+	public static EdgeOptions getEdgeOptions() {
 
-	        EdgeOptions options = new EdgeOptions();
+		EdgeOptions options = new EdgeOptions();
 
-	        if(Boolean.parseBoolean(ConfigReader.getProperty("headless"))) {
-	            options.addArguments("--headless=new");
-	        }
+		if (ConfigReader.getBoolean("headless")) {
+		    options.addArguments("-headless");
+		}
 
-	        options.setAcceptInsecureCerts(
-	                Boolean.parseBoolean(
-	                        ConfigReader.getProperty("acceptInsecureCerts")));
-
-	        return options;
-	    }
+		options.setAcceptInsecureCerts(ConfigReader.getBoolean("acceptInsecureCerts"));
+		return options;
+	}
 }
-
