@@ -46,5 +46,7 @@ public final class FrameworkConstants {
     public static final String PAGE_LOAD_TIMEOUT = "page.load.timeout";
     
     public static final String SCREENSHOT_PATH = "screenshot.path";
+    
+    public static final String RETRY_COUNT = "retry.count";
 
 }
