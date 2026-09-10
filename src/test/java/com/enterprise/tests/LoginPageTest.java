@@ -11,9 +11,11 @@ public class LoginPageTest extends BaseTest {
 	
 	@Test(retryAnalyzer = RetryAnalyzer.class)
 	public void verifyLogin() {
-		DashboardPage dashboard=loginAsAdmin();
-		Assert.assertTrue(dashboard.isDashboardDisplayed());
-		//Assert.fail("Testing retry Framewrok");
+
+	    DashboardPage dashboard = loginAsAdmin();
+
+	    Assert.assertTrue(dashboard.isDashboardDisplayed());
+
 	}
 	
 	
