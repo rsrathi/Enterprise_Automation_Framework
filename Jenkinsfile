@@ -47,5 +47,40 @@ pipeline {
         }
 
     }
+    post {
+
+    always {
+
+        allure(
+            includeProperties: false,
+            results: [[path: 'allure-results']]
+        )
+
+    }
+
+}
+post {
+
+    always {
+
+        publishHTML(target: [
+
+            allowMissing: false,
+
+            alwaysLinkToLastBuild: true,
+
+            keepAll: true,
+
+            reportDir: 'target/ExtentReport',
+
+            reportFiles: '*.html',
+
+            reportName: 'Extent Report'
+
+        ])
+
+    }
+
+}
 
 }
