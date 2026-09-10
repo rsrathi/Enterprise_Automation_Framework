@@ -19,21 +19,15 @@ pipeline {
 
         }
 
-        stage('Build') {
+        stage('Build & Test'') {
 
             steps {
-                bat 'mvn clean compile'
+                bat 'mvn clean test'
             }
 
         }
 
-        stage('Execute Tests') {
-
-            steps {
-                bat 'mvn test'
-            }
-
-        }
+        
 
     }
 
@@ -60,6 +54,10 @@ pipeline {
             reportName: 'Extent Report'
 
         ])
+         archiveArtifacts(
+            artifacts: 'target/ExtentReport/*.html',
+            fingerprint: true
+        )
 
 
         }
