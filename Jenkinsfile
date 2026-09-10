@@ -4,8 +4,8 @@ pipeline {
 
     tools {
 
-        jdk 'JDK21'
-        maven 'Maven'
+        jdk 'jdk21'
+        maven 'Maven_3.9.8'
 
     }
 
