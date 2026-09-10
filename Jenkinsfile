@@ -19,7 +19,7 @@ pipeline {
 
         }
 
-        stage('Build & Test'') {
+        stage('Build & Test') {
 
             steps {
                 bat 'mvn clean test'
@@ -27,9 +27,9 @@ pipeline {
 
         }
 
-        
+       }
 
-    }
+    
 
     post {
 
