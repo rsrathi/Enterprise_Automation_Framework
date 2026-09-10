@@ -19,7 +19,7 @@ public class RandomDataUtils {
 	
 	public static String getRandomFirstName() {
 
-        return "test" + getRandomNumber();
+        return "testinuser" + getRandomNumber();
 
     }
 
@@ -31,7 +31,7 @@ public class RandomDataUtils {
 
     public static String getRandomLastName() {
 
-        return "Sample" + getRandomNumber();
+        return "di" + getRandomNumber();
 
     }
     

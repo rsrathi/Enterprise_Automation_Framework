@@ -41,4 +41,9 @@ public class LoginPage extends BasePage{
 		clickLogin();
 		return new DashboardPage(driver);
 	}
+
+	public boolean isInvalidCredentialMessageDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

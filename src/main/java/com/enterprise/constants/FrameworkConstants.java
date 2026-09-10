@@ -48,5 +48,9 @@ public final class FrameworkConstants {
     public static final String SCREENSHOT_PATH = "screenshot.path";
     
     public static final String RETRY_COUNT = "retry.count";
+    
+    public static final String TESTDATA_PATH = "src/test/resources/testdata/";
+    
+    public static final String REPORT_PATH="report.path";
 
 }
