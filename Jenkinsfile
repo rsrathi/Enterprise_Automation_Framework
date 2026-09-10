@@ -41,28 +41,10 @@ pipeline {
 
         always {
 
-            archiveArtifacts artifacts: 'target/**/*.html',
-                             fingerprint: true
-
-        }
-
-    }
-    post {
-
-    always {
-
-        allure(
+            allure(
             includeProperties: false,
             results: [[path: 'allure-results']]
         )
-
-    }
-
-}
-post {
-
-    always {
-
         publishHTML(target: [
 
             allowMissing: false,
@@ -79,8 +61,11 @@ post {
 
         ])
 
-    }
 
-}
+        }
+
+    }
+    
+
 
 }
